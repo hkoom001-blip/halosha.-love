@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى هالة ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 400px;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 230px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #d63031;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        /* ترتيب الأزرار بجانب بعضها دائماً */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.1s;
+        }
+
+        .btn-yes {
+            background-color: #2ed573;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-no {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            position: relative;
+        }
+
+        .success-message {
+            display: none;
+            font-size: 1.6rem;
+            color: #d63031;
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- قمنا بتسمية الصورة pic.jpg، تأكد من رفع صورتك بنفس الاسم لاحقاً -->
+        <img src="pic.jpg" alt="❤️" class="main-image" id="cardImage">
+        
+        <div id="questionArea">
+            <h1>هالة بتحبيني ولا لاء؟</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" id="yesBtn">اي</button>
+                <button class="btn btn-no" id="noBtn">لاء</button>
+            </div>
+        </div>
+
+        <div class="success-message" id="successArea">
+            <h2>كنت بعرف انك بتحبيني 😍</h2>
+            <p>وانا كمان بحبك ياروحي 🥹🫂</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionArea = document.getElementById('questionArea');
+        const successArea = document.getElementById('successArea');
+
+        function teleportButton() {
+            const padding = 60;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.random() * maxX);
+            const randomY = Math.max(padding, Math.random() * maxY);
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // هروب فوري فائق السرعة
+        noBtn.addEventListener('mouseenter', teleportButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); 
+            teleportButton();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            questionArea.style.display = 'none';
+            successArea.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+
